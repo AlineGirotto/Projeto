@@ -1,0 +1,134 @@
+header {
+  background-color: black;
+  border-style: outset;
+  border-color:tomato;
+  color: aliceblue;
+  padding: .5rem 1rem;
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+}
+.conteudo {
+  padding: 8%;
+  margin-bottom: 2%;  
+  margin-top: 1%;
+  background-color: lightblue;
+}
+
+.main2 {
+  border-style: outset;
+  background-color: tomato;
+  background-size: cover;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  color: black;
+}
+
+.topo {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+footer {
+  background-color: black;
+  border-style: outset;
+  border-color: black;
+  color: aliceblue;
+}
+
+#Cabecalho {
+  color: white;
+
+  font-family: Times New Roman;
+  font-size: 22px;
+  height: 55%;
+  padding-left: 2%;
+  padding-bottom: 5px;
+  padding-top: 1px;
+  text-align: left;
+  width: 100%;
+}
+
+#espaco {
+  padding-top: 1pc;
+}
+
+#Dados {
+  font-size: 25px;
+}
+
+#val {
+  border-color: aqua;
+  padding: 1pc;
+  font-size: 20px;
+  text-align: center;
+}
+
+#sub {
+  border-color: green;
+  padding: 1pc;
+  font-size: 20px;
+  text-align: center;
+}
+#lista {
+  border-color: deeppink;
+  padding: 1pc;
+  font-size: 20px;
+  text-align: center;
+}
+
+#btSub {
+  text-align: right;
+}
+
+#brLista {
+  text-align: left;
+}
+
+#btValidar{
+  text-align: left;
+}
+
+#Formulario {
+  padding: 1.0em 15.0em 1.0em 15.0em !important;
+}
+
+#form {
+  text-align: left;
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+#Descricao {
+  text-align: right;
+}
+#msg{
+  text-align: center;
+  color: aliceblue;
+}
+.fieldset {
+  background-color:lightblue;
+  width: fit-content;
+  margin: auto;
+  border: 1px groove #ddd !important;
+  padding: 0 2.0em 2.0em 2.0em !important;
+  -webkit-box-shadow: 0px 0px 0px 0px #000;
+  box-shadow: 0px 0px 0px 0px #000;
+}
+
+.fieldset .CabecalhoFormulario {
+  font-size: 2.0em !important;
+  text-align: left !important;
+  width: auto;
+  padding: 0 10px;
+  border-bottom: none;
+}
+
+/* Cores */
+.red {
+  box-shadow: 0 0 15px red;
+}
+
