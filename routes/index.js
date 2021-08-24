@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Note = require('../models/note');
 const router = express.Router();
+var modul = require('./../models/tasks')();
 
 /* GET login page. */
 router.get('/', (req, res, next) => {
