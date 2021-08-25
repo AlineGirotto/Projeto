@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Note = require('../models/note');
 const router = express.Router();
-var modul = require('./../models/tasks')();
+var model = require('./../models/tasks')();
 
 /* GET login page. */
 router.get('/', (req, res, next) => {
@@ -10,7 +10,12 @@ router.get('/', (req, res, next) => {
 });
 /* GET home page. */
 router.get('/home', (req, res, next) => {
-  res.render('home', { title: 'Home' });
+  model.find(null, function(err, tasks){
+    if (err){
+      throw err;
+    }
+    res.render('home', { title: 'Home', tasks: tasks});
+  });  
 });
 /* GET cadastroFunc page. */
 router.get('/cadastroFunc', (req, res, next) => {

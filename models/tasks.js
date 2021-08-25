@@ -1,12 +1,12 @@
 module.exports = function(){
 	var db = require('./../libs/connect_db')();
-	var Schema = require('mongoose').Schema;
+	var mongoose = require('mongoose');
 
-	var task = Schema({
+	var task = mongoose.Schema({
 		title: String,
 		description: String,
 		status: Boolean
 	});
 
-	return db.model('tasks', task);
+	return mongoose.model('tasks', task);
 }
