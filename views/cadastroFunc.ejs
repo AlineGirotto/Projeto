@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <style>
+    .nav-link {
+      color: aliceblue;
+    }
+  </style>
+
+</head>
+
+<body class="d-flex h-100 text-center">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <div>
+        <a class="float-md-start nav-link active" href="/home" style="font-size: 20px;">Center Tech</a>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link" href="/listarPeca">Listar Peças</a>
+          <a class="nav-link" href="/listFunc">Listar Funcionários</a>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Cadastro
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="/cadastroFunc">Funcionários</a></li>
+              <li><a class="dropdown-item" href="/cadastroPeca">Peças</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="px-3 main2 ">
+      <div id="espaco">
+        <div id="Formulario">
+          <fieldset class="fieldset">
+            <legend class="CabecalhoFormulario">Cadastro de Funcionários</legend>
+
+            <form id='form' action="/addF" method="post">
+              <div id="Dados">
+                <table id="tabelaFunc">
+                  <tr>
+                    <td id="Descricao">
+                      Nome Completo:
+                    </td>
+                    <td id="formNome">
+                      <input placeholder="Digite o nome completo" type="text" id='nome' name="nome"
+                        onkeyup="verificaN()" maxlength="40">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="Descricao">
+                      CPF:
+                    </td>
+                    <td>
+                      <input placeholder="Digite o CPF" type="text" id='cpf' name="cpf" onkeyup="verificaCpf()"
+                        maxlength="14">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="Descricao">
+                      Data de Nascimento:
+                    </td>
+                    <td>
+                      <input type="date" id='date' name="data" onkeyup="verificaD()">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="Descricao">
+                      Sexo:
+                    </td>
+                    <td>
+                      <input type="radio" id="sexof" name="sexo" value="f"> Feminino <input type="radio" id="sexom"
+                        name="sexo" value="m"> Masculino
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="Descricao">
+                      CEP:
+                    </td>
+                    <td>
+                      <input placeholder="Digite o seu CEP" type="text" id='cep' name="cep" onkeyup="verificaCep()"
+                        maxlength="9">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="Descricao">
+                      Número da Residência:
+                    </td>
+                    <td>
+                      <input placeholder="Número" type="text" id='num' name="num" maxlength="6" onkeyup="verificaNum()">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="Descricao">
+                      Telefone:
+                    </td>
+                    <td>
+                      <input placeholder="Digite o telefone" type="tel" id="tel" name="tel" onkeyup="verificaTel()"
+                        maxlength="14" autocomplete="tel">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="Descricao">
+                      Email:
+                    </td>
+                    <td>
+                      <input placeholder="Digite o e-mail" type="email" id='email' name="email" onkeyup="verificaE()"
+                        maxlength="50">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="Descricao">
+                      Login:
+                    </td>
+                    <td>
+                      <input placeholder="Digite o login" type="login" id='login' name="login">
+                    </td>
+                  </tr><tr>
+                    <td id="Descricao">
+                      Senha:
+                    </td>
+                    <td>
+                      <input placeholder="Digite a senha" type="senha" id='senha' name="senha" maxlength="50">
+                    </td>
+                  </tr>
+                  <tr style="text-align: right;">
+                    <td>
+                      </br>
+                      <a id="btLista"><input type="button" id="lista" value="Listar Usuários"
+                          onclick="location. href='/listFunc'"></a>
+                    </td>
+                    <td>
+                      </br>
+                      <a id="btValidar"><input type="button" id="val" name="validar" value="Validar"></a>
+                      <a id="btSub"><input type="submit" id="sub" value="Enviar"></a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>
+          </fieldset>
+        </div>
+        <script type="text/javascript" src="../javascripts/index.js"></script>
+      </div>
+    </main>
+</body>
+
+</html>
