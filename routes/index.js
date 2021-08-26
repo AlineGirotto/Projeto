@@ -37,6 +37,8 @@ router.post('/addF', async (req, res, next) => {
   let num2 = req.body.num;
   let tel2 = req.body.tel;
   let email2 = req.body.email;
+  let log = req.body.login;
+  let senha2 = req.body.senha;
   // cria o objeto e insere no banco
   let func = await Note.create({
     nome: nome2,
@@ -46,7 +48,9 @@ router.post('/addF', async (req, res, next) => {
     cep: cep2,
     num: num2,
     tel: tel2,
-    email: email2
+    email: email2,
+    login: log,
+    senha: senha2
   });
   res.redirect("/cadastroFunc");
 });

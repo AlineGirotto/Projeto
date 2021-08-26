@@ -9,7 +9,9 @@ const func = new Schema({
 	cep: String,
 	num: String,
 	tel: String,
-	email: String
+	email: String,
+	login: String,
+	senha: String
 });
 
 module.exports = mongoose.model('funcionario', func);
