@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
   <title>
     <%= title %>
@@ -11,9 +12,20 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
   <style>
-  .nav-link {
-  color: aliceblue;
-  }
+    .nav-link {
+      color: aliceblue;
+    }
+      table{
+        border-style: outset;
+        border-color: gray;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+      }
+    }
   </style>
 
 </head>
@@ -42,7 +54,70 @@
 
     <main class="px-3 main2 ">
       <div class="conteudo">
-        <h1>Listagem de funcionários da empresa:</h1>
+        <h2>Listagem de funcionários registrados no sistema:</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td><strong>NOME</strong></td>
+              <td><strong>CPF</strong></td>
+              <td><strong>DATA DE NASCIMENTO</strong></td>
+              <td><strong>SEXO</strong></td>
+              <td><strong>CEP</strong></td>
+              <td><strong>RESIDÊNCIA</strong></td>
+              <td><strong>TELEFONE</strong></td>
+              <td><strong>E-MAIL</strong></td>
+              <td><strong>LOGIN</strong></td>
+              <td><strong>SENHA</strong></td>
+              <td><strong>Editar</strong></td>
+              <td><strong>Excluir</strong></td>
+            </tr>
+            <% notes.forEach( function(notes, i) { %>
+              <tr>
+                <td>
+                  <%= notes.nome %>
+                </td>
+                <td>
+                  <%= notes.CPF %>
+                </td>
+                <td>
+                  <%= notes.data %>
+                </td>
+                <td>
+                  <%= notes.sexo %>
+                </td>
+                <td>
+                  <%= notes.cep %>
+                </td>
+                <td>
+                  <%= notes.num %>
+                </td>
+                <td>
+                  <%= notes.tel %>
+                </td>
+                <td>
+                  <%= notes.email %>
+                </td>
+                <td>
+                  <%= notes.login %>
+                </td>
+                <td>
+                  <%= notes.senha %>
+                </td>
+                <td>
+                  <form action='/<%= notes.id %>/edit' method='GET'>
+                    <button type='submit' value='edit'>Editar</button>
+                   </form>
+                </td>
+                <td>
+                  <form action='/<%= notes.id %>/del' method='POST'>
+                    <button type='submit' value='remove'>Apagar</button>
+                  </form>
+                </td> 
+              </tr>
+              <% }); %>
+          </tbody>
+        </table>
+
       </div>
     </main>
 </body>

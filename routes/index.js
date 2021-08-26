@@ -19,10 +19,6 @@ router.get('/cadastroFunc', (req, res, next) => {
 router.get('/cadastroPeca', (req, res, next) => {
   res.render('cadastroPeca', { title: 'Cadastro de Peças' });
 });
-/* GET listFunc page. */
-router.get('/listFunc', (req, res, next) => {
-  res.render('listFunc', { title: 'Listagem de Funcionários' });
-});
 /* GET listarPeca page. */
 router.get('/listarPeca', (req, res, next) => {
   res.render('listarPeca', { title: 'Listagem de Peças' });
@@ -53,6 +49,25 @@ router.post('/addF', async (req, res, next) => {
     senha: senha2
   });
   res.redirect("/cadastroFunc");
+});
+
+router.get('/listFunc', async (req, res, next) => {
+  try {
+    let result = await Note.find().exec();
+    res.render('listFunc', { title: 'Lista de Funcionários', notes: result });
+  } catch (e) {
+    console.error(e);
+  }
+});
+
+router.post('/:id/del', async (req, res, next) => {
+  await Note.findByIdAndRemove(req.params.id);
+  res.redirect('/listFunc');
+});
+
+router.get('/:id/edit', async (req, res, next) => {
+  let noteToChange = await Note.findById(req.params.id);
+  res.render('editarFunc', { title: 'Editar os Dados', note: noteToChange });
 });
 
 module.exports = router;
