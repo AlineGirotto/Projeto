@@ -32,8 +32,15 @@ function verificar(e) {
     if(verificaTel() == true){
         cont ++;
     }
+    if(verificaLog() == true){
+        cont ++;
+    }
+    if(verificaSenha() == true){
+        cont ++;
+    }
 
-    if(cont != 8){
+
+    if(cont != 10){
         e.preventDefault();
     }
 }
@@ -220,6 +227,28 @@ function verificaTel() {
         return false;
     } else {
         te.classList.remove("red");
+        return true;
+    }
+}
+
+function verificaLog() {
+    var n = document.getElementById("login");
+    if (n.value == '') {
+        n.setAttribute("class", "red");
+        return false;
+    } else {
+        n.classList.remove("red");
+        return true;
+    }
+}
+
+function verificaSenha() {
+    var n = document.getElementById("senha");
+    if (n.value == '') {
+        n.setAttribute("class", "red");
+        return false;
+    } else {
+        n.classList.remove("red");
         return true;
     }
 }

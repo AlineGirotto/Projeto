@@ -35,7 +35,7 @@ router.post('/addF', async (req, res, next) => {
   let email2 = req.body.email;
   let log = req.body.login;
   let senha2 = req.body.senha;
-  // cria o objeto e insere no banco
+
   let func = await Note.create({
     nome: nome2,
     CPF: CPF2,
@@ -69,5 +69,22 @@ router.get('/:id/edit', async (req, res, next) => {
   let noteToChange = await Note.findById(req.params.id);
   res.render('editarFunc', { title: 'Editar os Dados', note: noteToChange });
 });
+
+router.post('/:id/edit', async (req, res, next) => {
+  let noteToChange = await Note.findById(req.params.id);
+  noteToChange.nome = req.body.inputNome;
+  noteToChange.CPF = req.body.inputCPF;
+  noteToChange.data = req.body.inputDt;
+  noteToChange.sexo = req.body.inputSexo;
+  noteToChange.cep = req.body.inputCEP;
+  noteToChange.num = req.body.inputNum;
+  noteToChange.tel = req.body.inputTel;
+  noteToChange.email = req.body.inputEmail;
+  noteToChange.login = req.body.inputLogin;
+  noteToChange.senha = req.body.inputSenha;
+  await Note.findByIdAndUpdate(noteToChange.id, noteToChange, { new: true });
+  res.redirect('/listFunc');
+});
+
 
 module.exports = router;
