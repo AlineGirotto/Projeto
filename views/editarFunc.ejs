@@ -15,7 +15,8 @@
     .nav-link {
       color: aliceblue;
     }
-    input{
+
+    input {
       position: block;
       right: 0;
     }
@@ -51,23 +52,75 @@
           <fieldset class="fieldset">
             <legend class="CabecalhoFormulario">Editar o cadastro de funcionários</legend>
             <div id="Dados">
-              <form action='/<%= note.id %>/edit' method='POST'>
-                <a>Nome:</a><input class="input-text" type="text" name='inputNome' value="<%= note.nome %>" autofocus></br>
-                <a>CPF:</a><input class="input-text" type="text" name='inputCPF'value="<%= note.CPF %>"></br>
-                <a>Data de Nascimento:</a><input class="input-text" type="text" name='inputDt' value="<%= note.data %>"></br>
-                <a>Sexo:</a><input class="input-text" type="text" name='inputSexo' value="<%= note.sexo %>"></br>
-                <a>CEP:</a><input class="input-text" type="text" name='inputCEP' value="<%= note.cep %>"></br>
-                <a>Residência:</a><input class="input-text" type="text" name='inputNum' value="<%= note.num %>"></br>
-                <a>Telefone:</a><input class="input-text" type="text" name='inputTel' value="<%= note.tel %>"></br>
-                <a>E-mail:</a><input class="input-text" type="text" name='inputEmail' value="<%= note.email %>"></br>
-                <a>Login:</a><input class="input-text" type="text" name='inputLogin' value="<%= note.login %>"></br>
-                <a>Senha:</a><input class="input-text" type="text" name='inputSenha' value="<%= note.senha %>"></br>
-                <button type='submit'> Salvar </button>
+              <form id='form' action='/<%= note.id %>/edit' method='POST'>
+                <div id="Dados">
+                  <table id="tabelaFunc">
+                    <tr>
+                      <td id="Descricao">Nome:</td>
+                      <td id="formNome">
+                        <input class="input-text" type="text" id="nome" name='inputNome' value="<%= note.nome %>" onkeyup="verificaN()">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td id="Descricao">CPF:</td>
+                      <td id="formNome">
+                        <input class="input-text" type="text" id="cpf" name='inputCPF' value="<%= note.CPF %>"
+                          onkeyup="verificaCpf()">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td id="Descricao">Data de Nascimento:</td>
+                      <td id="formNome">
+                        <input class="input-text" type="text" id="date" name='inputDt' value="<%= note.data %>" onkeyup="verificaD()">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td id="Descricao">Sexo:</td>
+                      <td id="formNome"><input class="input-text" type="text" id="sexo" name='inputSexo' value="<%= note.sexo %>" onkeyup="verificaSexo()">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td id="Descricao">CEP:</td>
+                      <td id="formNome"><input class="input-text" type="text" id="cep" name='inputCEP' value="<%= note.cep %>" onkeyup="verificaCep()">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td id="Descricao">Residência:</td>
+                      <td id="formNome"><input class="input-text" type="text" id="num" name='inputNum' value="<%= note.num %>" onkeyup="verificaNum()">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td id="Descricao">Telefone:</td>
+                      <td id="formNome"><input class="input-text" type="text" id="tel" name='inputTel' value="<%= note.tel %>" onkeyup="verificaTel()">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td id="Descricao">E-mail:</td>
+                      <td id="formNome"><input class="input-text" type="text" id="email" name='inputEmail'
+                          value="<%= note.email %>" onkeyup="verificaE()"></td>
+                    </tr>
+                    <tr>
+                      <td id="Descricao">Login:</td>
+                      <td id="formNome"><input class="input-text" type="text" id="login" name='inputLogin'
+                          value="<%= note.login %>" onkeyup="verificaLog()"></td>
+                    </tr>
+                    <tr>
+                      <td id="Descricao">Senha:</td>
+                      <td id="formNome"><input class="input-text" type="text" id="senha" name='inputSenha'
+                          value="<%= note.senha %>" onkeyup="verificaSenha()"></td>
+                    </tr>
+                    <tr style="text-align: left;">
+                      <td>
+                        <button type='submit' id="val"> Salvar </button>
+                      </td>
+                    </tr>
+
+
               </form>
             </div>
           </fieldset>
         </div>
-        <script type="text/javascript" src="../javascripts/index.js"></script>
+        <script type="text/javascript" src="../javascripts/verificaEdit.js"></script>
       </div>
     </main>
 </body>

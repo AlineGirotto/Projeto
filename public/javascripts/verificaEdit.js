@@ -173,27 +173,6 @@ function verificaCep() {
 }
 
 
-function verificaCep2() {
-    var cp = document.getElementById('cpf2');
-    var xcep = "";
-
-    if (cp.value.length == 5) {
-        cp.value += "-";
-    }
-    for (var i = 0; i <= cp.value.length; i++) {
-        if (cp.value.charAt(i) != "." && cp.value.charAt(i) != "-") {
-            xcep += cp.value.charAt(i);
-        }
-    }
-    if (cp.value == '' || xcep.length <= 7 || isNaN(xcep)) {
-        cp.setAttribute("class", "red");
-        return false;
-    } else {
-        cp.removeAttribute("class","red");
-        return true;
-    }
-}
-
 function verificaNum() {
     var n = document.getElementById("num");
     if (n.value == '' || isNaN(n.value)) {
@@ -206,23 +185,14 @@ function verificaNum() {
 }
 
 function verificaSexo() {
-    var s = document.getElementById("sexof");
-    var r = document.getElementById("sexom");
-    var radios = document.getElementsByName("sexo");
-    if (radios[0].checked == true) {
-        s.removeAttribute("class","red");
-        r.removeAttribute("class","red");
-        return true;
-    } else if (radios[1].checked == true) {
-        s.removeAttribute("class","red");
-        r.removeAttribute("class","red");
-        return true;
-    } else {
-        r.setAttribute("class", "red");
-        s.setAttribute("class", "red");
+    var n = document.getElementById("sexo");
+    if (n.value == '') {
+        n.setAttribute("class", "red");
         return false;
+    } else {
+        n.classList.remove("red");
+        return true;
     }
-
 }
 
 
