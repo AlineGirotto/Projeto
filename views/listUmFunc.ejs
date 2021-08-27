@@ -26,27 +26,9 @@
     td {
       border: 1px solid black;
     }
+  
   </style>
-  <script>
-    function verificaCpf() {
-      var c = document.getElementById('cpf');
-      var xcpf = "";
-
-      if (c.value.length == 3 || c.value.length == 7) {
-        c.value += ".";
-      } else if (c.value.length == 11) {
-        c.value += "-";
-      }
-
-      for (var i = 0; i <= c.value.length; i++) {
-        if (c.value.charAt(i) != "." && c.value.charAt(i) != "-") {
-          xcpf += c.value.charAt(i);
-        }
-      }
-    }
-
-  </script>
-
+  
 </head>
 
 <body class="d-flex h-100 text-center">
@@ -75,14 +57,9 @@
       <div class="conteudo">
         <h2>Listagem de funcionários registrados no sistema:</h2>
         </br>
-        <form action='/buscaN' id="form"  method='GET'>
-          <input class="input-text" type="text" name='inputNome' placeholder="Digite o nome">
-          <button type='submit'> Busca por nome</button>
-        </form>
-        <form action='/buscaC' id="form" method='GET'>
-          <input class="input-text" type="text" id="cpf" name='inputCpf' placeholder="Digite o CPF"
-            onkeyup="verificaCpf()" maxlength="14">
-          <button type='submit'> Busca por CPF </button>
+        </br>
+        <form action='/listFunc' id="form">
+          <button type='submit'> Mostrar todos</button>
         </form>
         </br>
         <table>
@@ -101,50 +78,48 @@
               <td><strong>Editar</strong></td>
               <td><strong>Excluir</strong></td>
             </tr>
-            <% notes.forEach( function(notes, i) { %>
               <tr>
                 <td>
-                  <%= notes.nome %>
+                  <%= note.nome %>
                 </td>
                 <td>
-                  <%= notes.CPF %>
+                  <%= note.CPF %>
                 </td>
                 <td>
-                  <%= notes.data %>
+                  <%= note.data %>
                 </td>
                 <td>
-                  <%= notes.sexo %>
+                  <%= note.sexo %>
                 </td>
                 <td>
-                  <%= notes.cep %>
+                  <%= note.cep %>
                 </td>
                 <td>
-                  <%= notes.num %>
+                  <%= note.num %>
                 </td>
                 <td>
-                  <%= notes.tel %>
+                  <%= note.tel %>
                 </td>
                 <td>
-                  <%= notes.email %>
+                  <%= note.email %>
                 </td>
                 <td>
-                  <%= notes.login %>
+                  <%= note.login %>
                 </td>
                 <td>
-                  <%= notes.senha %>
+                  <%= note.senha %>
                 </td>
                 <td>
-                  <form action='/<%= notes.id %>/edit' method='GET'>
+                  <form action='/<%= note.id %>/edit' method='GET'>
                     <button type='submit' value='edit'>Editar</button>
                   </form>
                 </td>
                 <td>
-                  <form action='/<%= notes.id %>/del' method='POST'>
+                  <form action='/<%= note.id %>/del' method='POST'>
                     <button type='submit' value='remove'>Excluir</button>
                   </form>
                 </td>
               </tr>
-              <% }); %>
           </tbody>
         </table>
       </div>

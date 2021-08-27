@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
 });
 /* GET home page. */
 router.get('/home', (req, res, next) => {
-  res.render('home', { title: 'Home'});
+  res.render('home', { title: 'Home' });
 });
 /* GET cadastroFunc page. */
 router.get('/cadastroFunc', (req, res, next) => {
@@ -48,6 +48,7 @@ router.post('/addF', async (req, res, next) => {
     login: log,
     senha: senha2
   });
+  
   res.redirect("/cadastroFunc");
 });
 
@@ -59,6 +60,7 @@ router.get('/listFunc', async (req, res, next) => {
     console.error(e);
   }
 });
+
 
 router.post('/:id/del', async (req, res, next) => {
   await Note.findByIdAndRemove(req.params.id);
@@ -86,5 +88,20 @@ router.post('/:id/edit', async (req, res, next) => {
   res.redirect('/listFunc');
 });
 
+router.get('/buscaN', async (req, res, next) => {
+  let result = await Note.findOne({ nome: req.query.inputNome });
+  if (result)
+    res.render('listUmFunc', { title: 'Resultado', note: result });
+  else
+    res.render('notFound', { title: 'Problemas na busca com o nome!'});
+});
+
+router.get('/buscaC', async (req, res, next) => {
+  let result = await Note.findOne({ CPF: req.query.inputCpf });
+  if (result)
+    res.render('listUmFunc', { title: 'Resultado', note: result });
+  else
+    res.render('notFound', { title: 'Problemas na busca com o CPF!'});
+});
 
 module.exports = router;
