@@ -35,15 +35,25 @@
   <div id="conteudo">
     <h1>Faça o login para prosseguir:</h1>
     </br>
+
     <div id="login">
-      <p>Digite seu usuário:</p>
-      <input class="input-text" type="text" name='inputLogin' placeholder="Seu login">
-      <p></p>
-      <p>Digite sua senha:</p>
-      <input class="input-text" type="text" name='inputSenha' placeholder="Sua senha">
-      </br>
-      </br>
-      <a href='/home'><button type='button' name='btList' style="width: 25%;">Logar</button></a>
+      <form action="/Vlogin" method="get">
+        <p>Digite seu usuário:</p>
+        <input class="input-text" type="text" name='inputLogin' placeholder="Seu login">
+        <p></p>
+        <p>Digite sua senha:</p>
+        <input class="input-text" type="password" name='inputSenha' placeholder="Sua senha">
+        </br>
+        </br>
+        <button type='submit' style="width: 25%;">Logar</button>
+      </form>
+      <% if (message) { %>
+        <p>
+          <label style="color: Red">
+            <%= message %>
+          </label>
+        </p>
+        <% } %>
     </div>
   </div>
 </body>

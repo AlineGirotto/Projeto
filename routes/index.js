@@ -5,23 +5,31 @@ const router = express.Router();
 
 /* GET login page. */
 router.get('/', (req, res, next) => {
-  res.render('login', { title: 'Login' });
+  res.render('login', { title: 'Login', message: null });
 });
 /* GET home page. */
 router.get('/home', (req, res, next) => {
-  res.render('home', { title: 'Home' });
+  try {
+    if (login) {
+      res.render('home', { title: 'Home', message: null });
+    } else {
+      res.render('login', { title: 'Login', message: null });
+    }
+  } catch {
+    res.render('login', { title: 'Login', message: null });
+  }
 });
 /* GET cadastroFunc page. */
 router.get('/cadastroFunc', (req, res, next) => {
-  res.render('cadastroFunc', { title: 'Cadastro de Funcionários' });
+  res.render('cadastroFunc', { title: 'Cadastro de Funcionários', message: null });
 });
 /* GET cadastroPeca page. */
 router.get('/cadastroPeca', (req, res, next) => {
-  res.render('cadastroPeca', { title: 'Cadastro de Peças' });
+  res.render('cadastroPeca', { title: 'Cadastro de Peças', message: null });
 });
 /* GET listarPeca page. */
 router.get('/listarPeca', (req, res, next) => {
-  res.render('listarPeca', { title: 'Listagem de Peças' });
+  res.render('listarPeca', { title: 'Listagem de Peças', message: null });
 });
 
 router.post('/addF', async (req, res, next) => {
@@ -48,7 +56,7 @@ router.post('/addF', async (req, res, next) => {
     login: log,
     senha: senha2
   });
-  
+
   res.redirect("/cadastroFunc");
 });
 
@@ -93,7 +101,7 @@ router.get('/buscaN', async (req, res, next) => {
   if (result)
     res.render('listUmFunc', { title: 'Resultado', note: result });
   else
-    res.render('notFound', { title: 'Problemas na busca com o nome!'});
+    res.render('notFound', { title: 'Problemas na busca com o nome!' });
 });
 
 router.get('/buscaC', async (req, res, next) => {
@@ -101,7 +109,22 @@ router.get('/buscaC', async (req, res, next) => {
   if (result)
     res.render('listUmFunc', { title: 'Resultado', note: result });
   else
-    res.render('notFound', { title: 'Problemas na busca com o CPF!'});
+    res.render('notFound', { title: 'Problemas na busca com o CPF!' });
+});
+
+router.get('/Vlogin', async (req, res, next) => {
+  let resultL = await Note.findOne({ login: req.query.inputLogin });
+
+  try {
+    if (resultL.senha == req.query.inputSenha) {
+      res.render('home', { title: 'Center Tech', message: null, login: true });
+    } else {
+      res.render('login', { title: 'Login', message: 'Erro ao efetuar o login', login: false });
+    }
+  } catch {
+    res.render('login', { title: 'Login', message: 'Erro ao efetuar o login', login: false });
+  }
+
 });
 
 module.exports = router;
